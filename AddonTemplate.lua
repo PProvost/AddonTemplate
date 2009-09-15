@@ -1,3 +1,4 @@
+-- AddonTemplate blatantly stolen (and adjusted to my tastes) from tekkub's git repo of the same name
 
 ----------------------
 --      Locals      --
@@ -69,3 +70,11 @@ SLASH_ADDONTEMPLATE1 = "/addontemplate"
 SlashCmdList.ADDONTEMPLATE = function(msg)
 	-- Do crap here
 end
+
+----------------------------------------
+--      Quicklaunch registration      --
+----------------------------------------
+
+local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
+local dataobj = ldb:GetDataObjectByName("AddonTemplate") or ldb:NewDataObject("LinkenLog", {type = "launcher", icon = "Interface\\Icons\\Spell_Nature_GroundingTotem"})
+dataobj.OnClick = SlashCmdList.ADDONTEMPLATE
