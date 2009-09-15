@@ -1,0 +1,21 @@
+## Interface: 30100
+
+## Title: AddonTemplate
+## Notes: Template for creating new addons
+## Author: Quaiche
+## Version: Alpha
+## X-Category: Misc
+
+## SavedVariables: AddonTemplateDB
+## SavedVariablesPerCharacter: AddonTemplateDBPC
+
+## OptionalDeps: tekDebug, tekErr
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+## X-LoadOn-Slash: /addontemplate
+
+libs/LibStub.lua
+libs/tekKonfigAboutPanel.lua
+
+AddonTemplate.lua
