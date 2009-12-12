@@ -1,31 +1,16 @@
 -- AddonTemplate blatantly stolen (and adjusted to my tastes) from tekkub's git repo of the same name
 
-----------------------
---      Locals      --
-----------------------
-
 local L = setmetatable({}, {__index=function(t,i) return i end})
 local defaults, defaultsPC, db, dbpc = {}, {}
 
 
-------------------------------
---      Util Functions      --
-------------------------------
-
 local function Print(...) print("|cFF33FF99Addon Template|r:", ...) end
-
 local debugf = tekDebug and tekDebug:GetFrame("AddonTemplate")
 local function Debug(...) if debugf then debugf:AddMessage(string.join(", ", tostringall(...))) end end
-
-
------------------------------
---      Event Handler      --
------------------------------
 
 local f = CreateFrame("frame")
 f:SetScript("OnEvent", function(self, event, ...) if self[event] then return self[event](self, event, ...) end end)
 f:RegisterEvent("ADDON_LOADED")
-
 
 function f:ADDON_LOADED(event, addon)
 	if addon:lower() ~= "addontemplate" then return end
@@ -36,10 +21,8 @@ function f:ADDON_LOADED(event, addon)
 	-- Do anything you need to do after addon has loaded
 
 	LibStub("tekKonfig-AboutPanel").new("AddonTemplate", "AddonTemplate") -- Make first arg nil if no parent config panel
-
 	self:UnregisterEvent("ADDON_LOADED")
 	self.ADDON_LOADED = nil
-
 	if IsLoggedIn() then self:PLAYER_LOGIN() else self:RegisterEvent("PLAYER_LOGIN") end
 end
 
@@ -61,20 +44,12 @@ function f:PLAYER_LOGOUT()
 	-- Do anything you need to do as the player logs out
 end
 
-
------------------------------
---      Slash Handler      --
------------------------------
-
 SLASH_ADDONTEMPLATE1 = "/addontemplate"
 SlashCmdList.ADDONTEMPLATE = function(msg)
 	-- Do crap here
 end
 
-----------------------------------------
---      Quicklaunch registration      --
-----------------------------------------
-
 local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 local dataobj = ldb:GetDataObjectByName("AddonTemplate") or ldb:NewDataObject("LinkenLog", {type = "launcher", icon = "Interface\\Icons\\Spell_Nature_GroundingTotem"})
 dataobj.OnClick = SlashCmdList.ADDONTEMPLATE
+
