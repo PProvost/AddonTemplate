@@ -4,7 +4,7 @@ local L = setmetatable({}, {__index=function(t,i) return i end})
 local defaults, defaultsPC, db, dbpc = {}, {}
 
 
-local function Print(...) print("|cFF33FF99Addon Template|r:", ...) end
+local function Print(...) print("|cFF33FF99AddonTemplate|r:", ...) end
 local debugf = tekDebug and tekDebug:GetFrame("AddonTemplate")
 local function Debug(...) if debugf then debugf:AddMessage(string.join(", ", tostringall(...))) end end
 
@@ -50,6 +50,6 @@ SlashCmdList.ADDONTEMPLATE = function(msg)
 end
 
 local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
-local dataobj = ldb:GetDataObjectByName("AddonTemplate") or ldb:NewDataObject("LinkenLog", {type = "launcher", icon = "Interface\\Icons\\Spell_Nature_GroundingTotem"})
+local dataobj = ldb:GetDataObjectByName("AddonTemplate") or ldb:NewDataObject("AddonTemplate", {type = "launcher", icon = "Interface\\Icons\\Spell_Nature_GroundingTotem"})
 dataobj.OnClick = SlashCmdList.ADDONTEMPLATE
 
